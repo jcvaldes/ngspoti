@@ -17,6 +17,7 @@ export class ArtistaComponent implements OnInit {
     private spotifyService: SpotifyService) {
 
     this.activatedRoute.params.subscribe(params => {
+      this.loading = true;
       this.getArtista(params.id);
       this.getTopTracks(params.id);
     });
@@ -25,18 +26,17 @@ export class ArtistaComponent implements OnInit {
   ngOnInit(): void {
   }
   getArtista(id: string) {
-    this.loading = true;
     this.spotifyService.getArtista(id)
       .subscribe(artista => {
-        this.loading = false;
+
         this.artista = artista;
       })
   }
   getTopTracks(id: string) {
     this.spotifyService.getTopTracks(id)
       .subscribe((topTracks: any[]) => {
-        debugger
         this.topTracks = topTracks;
+        this.loading = false;
       });
   }
 

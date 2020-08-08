@@ -11,6 +11,7 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router
   ) {
+    debugger
     authService.login().subscribe(data => {
       this.router.navigate(['/home']);
     }, err => {

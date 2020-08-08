@@ -31,6 +31,14 @@ export class AuthService {
       })
     );
   }
+  isLoggedIn() {
+    const isLogged = this.token.length > 5;
+    if (!isLogged)  {
+      return false;
+    } else {
+      return true;
+    }
+  }
   saveLocalStorage(token: string): void {
     localStorage.setItem('token', token);
     this.token = token;
