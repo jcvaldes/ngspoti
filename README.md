@@ -1,27 +1,71 @@
-# Ngspoti
+## Sacar una cuenta de desarrollador en spotify
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
+https://developer.spotify.com/dashboard/login
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## multi lenguaje
+Documentacion
+https://restcountries.eu/#api-endpoints-language
 
-## Code scaffolding
+Muestra todos los paises que hablan español
+GET: https://restcountries.eu/rest/v2/lang/es
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Token Spotiapp
+https://developer.spotify.com/documentation/general/guides/authorization-guide/
 
-## Build
+Client Credentials Flow
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Have your application request authorization
+The request is sent to the /api/token endpoint of the Accounts service:
 
-## Running unit tests
+POST https://accounts.spotify.com/api/token
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Params:
+grant_type : client_credentials
+client_id
+client_secret
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The body of this POST request must contain the following parameters encoded in application/x-www-form-urlencoded as defined in the OAuth 2.0 specification:
 
-## Further help
+REQUEST BODY PARAMETER	VALUE
+grant_type	Required.
+Set it to client_credentials.
+The header of this POST request must contain the following parameter:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+HEADER PARAMETER	VALUE
+Authorization	Required.
+Base 64 encoded string that contains the client ID and client secret key. The field must have the format: Authorization: Basic <base64 encoded client_id:client_secret>
+
+
+## Informacion de las API
+
+https://developer.spotify.com/console/ 
+
+entrar en el menu Browse y podemos probar las distintos endpoints
+
+Muestra los nuevos lanzamientos
+https://api.spotify.com/v1/browse/new-releases
+
+## Obtener un artista
+Documentación en spotify
+https://developer.spotify.com/console/get-artist/
+
+endpoint:
+https://api.spotify.com/v1/artists/{id}
+
+
+## Obtener top tracks
+Documentación en spotify
+https://developer.spotify.com/console/get-artist-top-tracks/
+
+endpoint:
+https://api.spotify.com/v1/artists/{id}/top-tracks?country=us
+
+
+## Widgets de spotify
+Documentación en spotify
+https://developer.spotify.com/documentation/widgets/guides/adding-a-widget/#standard-html-pages
+
+play button
+https://developer.spotify.com/documentation/widgets/generate/play-button/
