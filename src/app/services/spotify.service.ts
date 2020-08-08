@@ -15,11 +15,12 @@ export class SpotifyService {
 
     const url = `${environment.apiSpotify}/${query}`;
 
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQA4eVMdHdr2ZAT9QrF5-gSca6iRXCllJ9knYgHquRoRwOWThQrpePdKsRg8eTH9l2eQGbStaXdcg3GhrSI'
-    });
+    // const headers = new HttpHeaders({
+    //   'Authorization': 'Bearer BQA4eVMdHdr2ZAT9QrF5-gSca6iRXCllJ9knYgHquRoRwOWThQrpePdKsRg8eTH9l2eQGbStaXdcg3GhrSI'
+    // });
 
-    return this.http.get(url, { headers });
+//    return this.http.get(url, { headers });
+    return this.http.get(url);
 
   }
   getNewReleases() {
