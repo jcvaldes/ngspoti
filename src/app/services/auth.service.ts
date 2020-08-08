@@ -13,12 +13,13 @@ export class AuthService {
   token: string;
   encoded = btoa(environment.clientId + ':' + environment.secretId);
   constructor(
+    private router: Router,
     private http: HttpClient
   ) {
     this.loadStorage();
   }
-  login() {
-    const body = 'grant_type=client_credentials';
+  login(grant_type = 'client_credentials') {
+    const body = `grant_type=${grant_type}`;
     return this.http.post(`${environment.epLogin}`, body, {
       headers: new HttpHeaders({
         Authorization: 'Basic ' + this.encoded,
@@ -26,10 +27,13 @@ export class AuthService {
       })
     }).pipe(
       map((data: any) => {
-        this.saveLocalStorage(data.access_token);
+        this.saveLocalStorage(data);
         return data;
       })
     );
+  }
+  renewToken() {
+    return this.login('refresh_token');
   }
   isLoggedIn() {
     const isLogged = this.token.length > 5;
@@ -39,9 +43,20 @@ export class AuthService {
       return true;
     }
   }
-  saveLocalStorage(token: string): void {
-    localStorage.setItem('token', token);
-    this.token = token;
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+  expireToken(): number {
+    return +localStorage.getItem('spotify-exp');
+  }
+  saveLocalStorage(data): void {
+    const expiresIn = new Date().setSeconds(data.expires_in);
+    localStorage.setItem('token', data.access_token);
+    localStorage.setItem('spotify-exp', expiresIn.toString());
+
+    this.token = data.access_token;
+
   }
   private loadStorage(): void {
     if (localStorage.getItem('token')) {

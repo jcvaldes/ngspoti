@@ -12,15 +12,17 @@ export class TokenInterceptor implements HttpInterceptor {
   }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const auth = this.injector.get(AuthService);
-    const router = this.injector.get(Router);
     const token = auth.token ? auth.token : '';
+    // const router = this.injector.get(Router);
+    // quiero que no intercepte el login
     if (request.url.endsWith('token')) {
       return next.handle(request);
     }
-    if (!auth.isLoggedIn()) {
-      router.navigate(['/login']);
-      return next.handle(request);
-    }
+    // esto lo hago en un guard
+    // if (!auth.isLoggedIn()) {
+    //   router.navigate(['/login']);
+    //   return next.handle(request);
+    // }
     request = request.clone({
       setHeaders: {
         // 'Api-Token': token,
