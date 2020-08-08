@@ -69,3 +69,10 @@ https://developer.spotify.com/documentation/widgets/guides/adding-a-widget/#stan
 
 play button
 https://developer.spotify.com/documentation/widgets/generate/play-button/
+
+##Publicar en github pages
+```
+npm i -g angular-cli-ghpages
+ng build --prod --base-href "https://jcvaldes.github.io/ngspoti/"
+npx ngh --dir=dist/ngspoti
+```
