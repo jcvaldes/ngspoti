@@ -21,10 +21,11 @@ The request is sent to the /api/token endpoint of the Accounts service:
 POST https://accounts.spotify.com/api/token
 
 Params:
+```
 grant_type : client_credentials
 client_id
 client_secret
-
+```
 
 The body of this POST request must contain the following parameters encoded in application/x-www-form-urlencoded as defined in the OAuth 2.0 specification:
 
