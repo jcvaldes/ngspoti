@@ -23,6 +23,8 @@ export class TokenInterceptor implements HttpInterceptor {
     //   router.navigate(['/login']);
     //   return next.handle(request);
     // }
+
+    // los request son inmutables
     request = request.clone({
       setHeaders: {
         // 'Api-Token': token,
