@@ -20,7 +20,7 @@ export class VerifyTokenGuard implements CanActivate {
       let tokenExp = new Date(exp * 1000);
       let now = new Date();
       now.setTime( now.getTime() + (1 * 60 * 60 * 1000));
-
+      // Return the number of milliseconds since 1970/01/01:
       if ( tokenExp.getTime() > now.getTime() ) {
         resolve(true);
       } else {
