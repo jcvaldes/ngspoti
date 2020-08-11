@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
     .subscribe( (data: any) => {
       console.log(data);
       this.loading = false;
+      // this.artistas = data.artists.items;
       this.artistas = data;
     });
   }

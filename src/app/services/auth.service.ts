@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   token: string;
+  // encodea en base64 un string
   encoded = btoa(environment.clientId + ':' + environment.secretId);
   constructor(
     private router: Router,
@@ -51,6 +52,7 @@ export class AuthService {
     return +localStorage.getItem('spotify-exp');
   }
   saveLocalStorage(data): void {
+    debugger
     const expiresIn = new Date().setSeconds(data.expires_in);
     localStorage.setItem('token', data.access_token);
     localStorage.setItem('spotify-exp', expiresIn.toString());
