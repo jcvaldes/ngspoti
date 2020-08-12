@@ -15,9 +15,11 @@ export class TarjetaComponent implements OnInit {
   }
   verArtista(item) {
     let artistId;
+    // si viene desde el search
     if ( item.type === 'artist') {
       artistId = item.id;
     } else {
+      // si viene desde el home
       artistId = item.artists[0].id;
     }
     this.router.navigate(['/artist', artistId]);

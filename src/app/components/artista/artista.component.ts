@@ -15,7 +15,7 @@ export class ArtistaComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private spotifyService: SpotifyService) {
-
+    // recupero el id del artista
     this.activatedRoute.params.subscribe(params => {
       this.loading = true;
       this.getArtista(params.id);
