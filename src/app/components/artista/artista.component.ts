@@ -30,7 +30,7 @@ export class ArtistaComponent implements OnInit {
       .subscribe(artista => {
 
         this.artista = artista;
-      })
+      });
   }
   getTopTracks(id: string) {
     this.spotifyService.getTopTracks(id)
