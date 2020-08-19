@@ -52,6 +52,7 @@ export class AuthService {
     return +localStorage.getItem('spotify-exp');
   }
   saveLocalStorage(data): void {
+    // agrega a la fecha actual  3600 segundos mas expresados en milisegundos desde 1970/1/1
     const expiresIn = new Date().setSeconds(data.expires_in);
     localStorage.setItem('ngspoti-token', data.access_token);
     localStorage.setItem('spotify-exp', expiresIn.toString());

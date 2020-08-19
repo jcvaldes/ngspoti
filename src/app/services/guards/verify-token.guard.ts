@@ -35,12 +35,13 @@ export class VerifyTokenGuard implements CanActivate {
     });
   }
   private checkExpiresToken() {
-    debugger
     const expiredToken = this.tokenEval(this.authService.expireToken());
     if (expiredToken) {
       this.authService.logout();
       return false;
     }
+    // verifica si tiene que renovar token, El usuario ni se entera
+    // y puede seguir trabajando
     return this.verifyRenew(this.authService.expireToken());
   }
   private tokenEval( exp: number ) {
