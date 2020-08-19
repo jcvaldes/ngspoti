@@ -45,24 +45,23 @@ export class AuthService {
     }
   }
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('ngspoti-token');
     this.router.navigate(['/login']);
   }
   expireToken(): number {
     return +localStorage.getItem('spotify-exp');
   }
   saveLocalStorage(data): void {
-    debugger
     const expiresIn = new Date().setSeconds(data.expires_in);
-    localStorage.setItem('token', data.access_token);
+    localStorage.setItem('ngspoti-token', data.access_token);
     localStorage.setItem('spotify-exp', expiresIn.toString());
 
     this.token = data.access_token;
 
   }
   private loadStorage(): void {
-    if (localStorage.getItem('token')) {
-      this.token = localStorage.getItem('token');
+    if (localStorage.getItem('ngspoti-token')) {
+      this.token = localStorage.getItem('ngspoti-token');
     } else {
       this.token = '';
     }
